@@ -1,0 +1,337 @@
+<template>
+	<list :pagingEnabled="true" class="zhi_index04" :offset-accuracy="videoStyle.height" :show-scrollbar="false" @loadmore="Jiazai"
+	 ref="list" :loadmoreoffset="loadMoreHeight" @scroll="Scroll">
+		<header>
+			<uni-nav-bar :fixed="true" title="测试" left-icon="back" right-icon="search" :status-bar="true" />
+		</header>
+		<cell style="position:relative;" :style="videoStyle" v-for="(l,i) in contentArr" :key='i' @disappear="Disappear($event,i)"
+		 @appear="onappear">
+			<rich-text :nodes="transforHtml(l.clauseContent)"></rich-text>
+		</cell>
+	</list>
+</template>
+<script>
+	const deviceInfo = uni.getSystemInfoSync()
+	if (deviceInfo.brand == 'Xiaomi') {
+		deviceInfo.windowHeight += 1
+	}
+	var that;
+	import {
+		fetchContentDetail
+	} from '../../service/normative.js'
+	import htmlParse from '../../utils/htmlParse.js'
+	export default {
+		onLoad(options) {
+			const originData = JSON.parse(decodeURIComponent(options.originData))
+			const chapterData = JSON.parse(decodeURIComponent(options.chapterData))
+			this.originData = originData
+			this.chapterData = chapterData
+			
+		},
+		data() {
+			return {
+				statusBarHeight: deviceInfo.statusBarHeight + 'px',
+				loadMoreHeight: deviceInfo.windowHeight * 2, // 触发 loadmore 事件所需要的垂直偏移距离 加载到剩余2	 继续加载
+				videoStyle: {
+					width: "750rpx",
+					height: deviceInfo.windowHeight + 'px',
+				},
+				originData: {},
+				chapterData: {},
+				showTab: -1,
+				contentArr: [],
+			}
+		},
+		onShow() {
+			that = this;
+			that.initData()
+		},
+		onHide() {
+			that = this;
+		},
+		methods: {
+			async initData() {
+				try {
+					const res = await fetchContentDetail({
+						normsNo: that.chapterData.normsNo,
+						chaptersNo: that.chapterData.chaptersNo
+					})
+					if (res && res.length) {
+						console.log(res)
+						that.contentArr = res;
+					}
+				} catch (e) {
+					//TODO handle the exception
+					uni.showToast({
+						title: e.data.message,
+						icon: 'none'
+					})
+				}
+			},
+			transforHtml(html) {
+				return htmlParse(html)
+			}
+		// 	onappear(e) {
+		// 		this.appear = e.direction;
+		// 	},
+		// 	Disappear(e, i) {
+		// 		this.a = 0;
+		// 		if (that.suo == 1) {
+		// 			return false;
+		// 		}
+		// 		if (this.appear == e.direction && deviceInfo.platform == 'android') {
+		// 			this.$set(this.lie[this.index], 'fengmian', false)
+		// 			this.index = (e.direction == 'up') ? i + 1 : i - 1;
+		// 			setTimeout(() => {
+		// 				uni.createVideoContext(`video_${this.index}`, this).play()
+		// 			}, 300)
+		// 		}
+		// 	},
+		// 	Scroll(e) {
+		// 		this.a = 0;
+		// 		if (deviceInfo.platform == 'ios') {
+		// 			var i = Math.abs(e.contentOffset.y / deviceInfo.windowHeight)
+		// 			if (i != this.index) {
+		// 				this.$set(this.lie[this.index], 'fengmian', false)
+		// 				this.index = i
+		// 				setTimeout(() => {
+		// 					uni.createVideoContext(`video_${this.index}`, this).play()
+		// 				}, 300)
+		// 			}
+		// 		}
+		// 	},
+		// 	Jiazai: function() {
+		// 		this.lie = this.shuju.lie
+		// 		if (this.lie.length > 0) {
+		// 			setTimeout(() => {
+		// 				uni.createVideoContext(`video_${that.index}`, that).play()
+		// 			}, 500)
+		// 		}
+		// 	}
+		}
+	}
+</script>
+
+<style scoped>
+	.maxTxPusher {
+		width: 750upx;
+		background-color: #111111;
+		position: fixed;
+	}
+
+	.zhi_xiashipin10 {
+		position: absolute;
+		right: 15upx;
+		bottom: 60px;
+		width: 100upx;
+		z-index: 99;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.neirong {
+		position: absolute;
+		top: 0;
+	}
+
+	.zhi_xiashipin7 {
+		width: 480upx;
+		color: #FEFEFE;
+		line-height: 40upx;
+	}
+
+	.zhi_xiashipin5 {
+		padding-right: 15upx;
+		flex-direction: row;
+		align-items: center;
+		color: #46639B;
+		padding-bottom: 15upx;
+	}
+
+	.zhi_xiashipin6 {
+		width: 36upx;
+		height: 34upx;
+	}
+
+	.zhi_index00 {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+	}
+
+	.zhi_index01 {
+		padding-top: 30upx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.zhi_index02 {
+		flex-direction: row;
+		width: 250px;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.zhi_index04 {
+		width: 750upx;
+		flex: 1;
+	}
+
+	.zhi_index05 {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.zhi_index06 {
+		position: absolute;
+		left: 30upx;
+		bottom: 150upx;
+	}
+
+	.zhi_index07 {
+		color: #FFFFFF;
+		font-size: 14px;
+		padding-left: 10upx;
+	}
+
+	.zhi_index08 {
+		padding-bottom: 20upx;
+		color: #FFFFFF;
+	}
+
+	.zhi_index09 {
+		line-height: 50upx;
+		color: #FF0000;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.zhi_index10 {
+		line-height: 50upx;
+		color: #FFFFFF;
+		font-size: 15px;
+	}
+
+	.zhi_index11 {
+		position: absolute;
+		left: 20px;
+		top: 35upx;
+	}
+
+	.zhi_index12 {
+		width: 40upx;
+		height: 40upx;
+	}
+
+	.zhi_index13 {
+		position: relative;
+		width: 90upx;
+		height: 140upx;
+	}
+
+	.zhi_index14 {
+		width: 90upx;
+		height: 90upx;
+		border-radius: 45upx;
+		margin-top: 8px;
+	}
+
+	.zhi_index15 {
+		position: absolute;
+		top: 4px;
+		left: 7px;
+		width: 68upx;
+		height: 36upx;
+		align-items: center;
+		justify-content: center;
+		background-color: #FF0000;
+		border-radius: 30upx;
+	}
+
+	.zhi_index16 {
+		position: absolute;
+		color: #FF0000;
+		left: 25upx;
+		bottom: 10upx;
+		width: 20px;
+		height: 20px;
+	}
+
+	.zhi_index17 {
+		color: #FFFFFF;
+		font-size: 22upx;
+	}
+
+	.zhi_index18 {
+		width: 70upx;
+		height: 150upx;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.zhi_index19 {
+		width: 56upx;
+		height: 56upx;
+	}
+
+	.zhi_index20 {
+		width: 70upx;
+		height: 180upx;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.zhi_index21 {
+		color: #FFFFFF;
+		font-size: 16px;
+		padding-top: 4px;
+	}
+
+	.zhi_index22 {
+		width: 100upx;
+		height: 100upx;
+	}
+
+	.zhi_index23 {
+		padding-bottom: 46upx;
+	}
+
+	.zhi_index24 {
+		position: absolute;
+		bottom: 10px;
+		left: 0px;
+		width: 750upx;
+	}
+
+	.dibu1 {
+		font-weight: bold;
+		font-size: 38upx;
+		color: #FFFFFF !important;
+	}
+
+	.dibu3 {
+		position: relative;
+		height: 30px;
+	}
+
+	.dibu2 {
+		position: absolute;
+		width: 30px;
+		height: 2px;
+		background-color: #FFFFFF;
+		bottom: 0;
+		left: 2px;
+		border-radius: 4upx;
+	}
+
+	.dibu {
+		color: #dcdcdc;
+		font-size: 32upx;
+	}
+</style>

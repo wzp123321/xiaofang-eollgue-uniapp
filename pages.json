@@ -1,0 +1,398 @@
+{
+	"pages": [{
+			"path": "pages/normative/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/welcome/welcome",
+			"style": {
+				"navigationBarTitleText": "消防学院",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/login/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/normative-interpretation/normative-interpretation",
+			"style": {
+				"navigationBarTitleText": "规范解读",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "0"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/personal/personal",
+			"style": {
+				"navigationBarBackgroundColor": "#251E1E",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": {
+						"titleText": "我的"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/normative-interpretation/normative-interpretation-info/normative-interpretation-info",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"softinputMode": "adjustResize",
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/feedback/feedback",
+			"style": {
+				"navigationBarTitleText": "意见反馈",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "0"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/my-collection/my-collection",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "0"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/my-download/my-download",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/about-us/about-us",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+		{
+			"path": "pages/personal-module/personal-edit/personal-edit",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/personal-module/vip-purchase/vip-purchase",
+			"style": {
+				"navigationBarTitleText": "开通VIP"
+			}
+		},
+		{
+			"path": "pages/personal-module/bind-phone/bind-phone",
+			"style": {
+				"navigationBarTitleText": "绑定手机号"
+			}
+		},
+		{
+			"path": "pages/personal-module/favorites-list/favorites-list",
+			"style": {
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "0"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/collection-detail/collection-detail",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/personal-module/personal-info/personal-info",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/login/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/complete/complete",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"softinputMode": "adjustResize",
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/normative/nr/nr",
+			"style": {
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "标准",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/search/search",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"softinputMode": "adjustResize",
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/np/np",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"softinputMode": "adjustResize",
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/np-content/np-content",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"softinputMode": "adjustResize",
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/normative/classic/classic",
+			"style": {
+				"navigationBarTitleText": "经典评论",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/normative/latest/latest",
+			"style": {
+				"navigationBarTitleText": "最新评论",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/same-origin/same-origin",
+			"style": {
+				"navigationBarTitleText": "同类索引",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/demo-list/demo-list",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/content-search/content-search",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"pullToRefresh": {
+						"support": false,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/service-argeement/service-argeement",
+			"style": {
+				"navigationBarTitleText": "服务协议"
+			}
+		},
+		{
+			"path": "pages/privacy-policy/privacy-policy",
+			"style": {
+				"navigationBarTitleText": "隐私政策"
+			}
+		},
+		{
+			"path": "App",
+			"style": {}
+		}, {
+			"path": "pages/new-search/new-search",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"pullToRefresh": {
+						"support": true,
+						"style": "circle",
+						"height": "20%",
+						"offset": "50px"
+					}
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"app-plus": {
+		"softinputNavBar": "none",
+		"softinputMode": "adjustResize"
+	},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#333333",
+		"borderStyle": "#E1E1E1",
+		"list": [{
+				"pagePath": "pages/normative/index",
+				"text": "规范",
+				"iconPath": "static/tabbar/tab1.png",
+				"selectedIconPath": "static/tabbar/tab1_selected.png"
+			},
+			{
+				"pagePath": "pages/normative-interpretation/normative-interpretation",
+				"text": "规范解读",
+				"iconPath": "static/tabbar/tab2.png",
+				"selectedIconPath": "static/tabbar/tab2_selected.png"
+			},
+			{
+				"pagePath": "pages/personal-module/personal/personal",
+				"text": "我的",
+				"iconPath": "static/tabbar/tab3.png",
+				"selectedIconPath": "static/tabbar/tab3_selected.png"
+			}
+		]
+	}
+}
