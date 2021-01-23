@@ -2,8 +2,8 @@
     "name" : "消防学院",
     "appid" : "__UNI__2ECC185",
     "description" : "消防学院",
-    "versionName" : "1.0.0",
-    "versionCode" : "100",
+    "versionName" : "1.0.1",
+    "versionCode" : 101,
     "transformPx" : false,
     "h5" : {
         "devServer" : {
@@ -96,6 +96,9 @@
                         "__platform__" : [ "android" ],
                         "appid" : "wx7df5979be4fc5bb8",
                         "UniversalLinks" : "https://firecollegue.cn/"
+                    },
+                    "alipay" : {
+                        "__platform__" : [ "android" ]
                     }
                 },
                 "push" : {

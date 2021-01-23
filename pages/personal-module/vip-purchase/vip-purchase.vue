@@ -242,6 +242,8 @@
 						provider: "appleiap",
 						orderInfo: {
 							productid: productid,
+							username: userInfo.id,
+							quantity: 1
 						},
 						success: (result) => {
 							console.log("success--------------------", result);
