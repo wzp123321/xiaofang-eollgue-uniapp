@@ -344,6 +344,12 @@
 													goodsName: event[j].title,
 												})
 											);
+											// 这个调试用的 后续注释
+											uni.showToast({
+												icon:'success',
+												title:'已成功获取商品列表',
+												duration:3000
+											})
 											that.goodInfo = that.vipList[0];
 											console.log(that.vipList);
 										}

@@ -56,7 +56,7 @@
 			// flag 标示点击tab切换时触发搜索
 			search() {
 				uni.showLoading({
-					title: '正在为您搜索中...'
+					title: '搜索中...'
 				})
 				if (!this.searchTxt) {
 					uni.showToast({
@@ -89,6 +89,7 @@
 					if (res) {
 						this.total = res.total
 						this.dataList = [...this.dataList, ...res.records]
+						console.log('this.dataList----------',this.dataList)
 					}
 				} catch (e) {
 					console.log('搜索错误', e)

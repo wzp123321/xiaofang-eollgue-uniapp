@@ -1,15 +1,20 @@
 <template>
-	<view class="search-item" >
+	<view class="search-item">
 		<view class="search-item-title" v-html="highLightDecorator(item.title)" @tap="toContent"></view>
 		<view class="search-item-sub" @tap="toContent">
 			<text>编号：{{ item.normsNo }}</text>
 			<text>{{ item.normsRegion }}</text>
 		</view>
-		<view class="search-item-content" v-html="highLightDecorator(item.content)" @tap="toContent"></view>
+		<view :class="['search-item-content', !item.content ? '' : 'h80']" v-html="highLightDecorator(item.content)"
+		 @tap="toContent">
+			<!-- <rich-text :nodes="highLightDecorator(item.content)"></rich-text> -->
+		</view>
+
 	</view>
 </template>
 
 <script>
+	import uParse from '@/components/feng-parse/parse.vue'
 	export default {
 		props: {
 			item: {
@@ -27,10 +32,12 @@
 				if (!this.keyword) {
 					return content
 				}
-				if(!content){
+				if (!content) {
 					return ''
 				}
-				return content.replace(this.keyword, `<span class="mark" style="color: #FCD002;">${this.keyword}</span>`)
+				console.log(content.replace(this.keyword, `<span style="color: #FCD002;">${this.keyword}</span>`))
+				return content.replaceAll(this.keyword, `<em style="color: #FCD002;">${this.keyword}</em>`).replaceAll(
+					'#000000', '#666666')
 			},
 			toContent() {
 				if (this.item.chaptersNo && this.item.chaptersPid) {
@@ -39,10 +46,10 @@
 							'&tap=' + this.item.chaptersNo + '&clauseNo=' + this.item.clauseNo
 					})
 				} else {
-					http://localhost:8081/#/pages/np/np?normsNo=GB50016-2014&title=
-					uni.navigateTo({
-						url: '/pages/np/np?normsNo='+this.item.normsNo+'&title='+this.item.title
-					})
+					http: //localhost:8081/#/pages/np/np?normsNo=GB50016-2014&title=
+						uni.navigateTo({
+							url: '/pages/np/np?normsNo=' + this.item.normsNo + '&title=' + this.item.title
+						})
 				}
 			}
 		}
@@ -85,9 +92,26 @@
 			-webkit-box-orient: vertical;
 			-webkit-line-clamp: 2;
 			overflow: hidden;
-			::v-deep img{
+
+			::v-deep img {
 				width: 32px;
 				height: 32px;
+			}
+		}
+
+		.h80 {
+			color: #666 !important;
+			height: 80rpx;
+			overflow: hidden;
+
+			/deep/ div {
+				p {
+					color: #666 !important;
+
+					span {
+						color: #666 !important;
+					}
+				}
 			}
 		}
 	}
