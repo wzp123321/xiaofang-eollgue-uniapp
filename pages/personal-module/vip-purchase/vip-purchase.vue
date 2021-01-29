@@ -338,20 +338,15 @@
 										console.log(event, event.length);
 										uni.hideLoading();
 										for (var j in event) {
-											that.vipList.push(
-												Object.assign(event[j], {
-													id: event[j].productid,
-													goodsName: event[j].title,
-												})
-											);
-											// 这个调试用的 后续注释
-											uni.showToast({
-												icon:'success',
-												title:'已成功获取商品列表',
-												duration:3000
-											})
-											that.goodInfo = that.vipList[0];
-											console.log(that.vipList);
+											console.log(event)
+											// that.vipList.push(
+											// 	Object.assign(event[j], {
+											// 		id: event[j].productid,
+											// 		goodsName: event[j].title,
+											// 	})
+											// );
+											// that.goodInfo = that.vipList[0];
+											// console.log(that.vipList);
 										}
 									},
 									function(errormsg) {
@@ -388,6 +383,7 @@
 					const list = res.map((item) => {
 						return Object.assign(item, {
 							id: item.goodsId,
+							productid: item.goodsId,
 						});
 					});
 					this.vipList = list;
@@ -400,10 +396,9 @@
 		 * 初始化
 		 */
 		onLoad() {
+			this.getVipList();
 			if (this.isIOS) {
 				this.plusReady();
-			} else {
-				this.getVipList();
 			}
 		},
 	};
