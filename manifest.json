@@ -2,8 +2,8 @@
     "name" : "消防学院",
     "appid" : "__UNI__2ECC185",
     "description" : "消防学院",
-    "versionName" : "1.0.1",
-    "versionCode" : 101,
+    "versionName" : "1.0.4",
+    "versionCode" : 104,
     "transformPx" : false,
     "h5" : {
         "devServer" : {
@@ -37,10 +37,10 @@
         "modules" : {
             "Push" : {},
             "Share" : {},
-            "OAuth" : {},
             "Speech" : {},
             "VideoPlayer" : {},
-            "Payment" : {}
+            "Payment" : {},
+            "OAuth" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -83,13 +83,7 @@
             "sdkConfigs" : {
                 "ad" : {},
                 "maps" : {},
-                "oauth" : {
-                    "weixin" : {
-                        "appid" : "wx7df5979be4fc5bb8",
-                        "appsecret" : "b1e40fe2436e7c8a85302af76c6c7a26",
-                        "UniversalLinks" : "https://firecollegue.cn/"
-                    }
-                },
+                "oauth" : {},
                 "payment" : {
                     "appleiap" : {},
                     "weixin" : {

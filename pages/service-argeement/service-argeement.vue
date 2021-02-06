@@ -202,14 +202,14 @@
 
 <style lang="less" scoped>
 	.service-argeement {
-		font-size: 28rpx;
+		font-size: 32rpx;
 		color: #666;
-		padding: 16rpx;
+		padding: 24rpx;
 		line-height: 48rpx;
 		white-space: pre-line;
 
 		&-title {
-			font-size: 32rpx;
+			font-size: 36rpx;
 			text-align: center;
 			color: #333;
 			font-weight: 600;

@@ -30,6 +30,18 @@ export const userModules = [{
 		imgUrl: '/static/personal/about-us-ico.svg'
 	},
 	{
+		title: "隐私政策",
+		hasBorder: true,
+		url: "/pages/privacy-policy/privacy-policy",
+		imgUrl: '/static/personal/collect-ico.svg'
+	},
+	{
+		title: "服务协议",
+		hasBorder: true,
+		url: "/pages/service-argeement/service-argeement",
+		imgUrl: '/static/personal/about-us-ico.svg'
+	},
+	{
 		title: "退出登录",
 		hasBorder: true,
 		url: "",
