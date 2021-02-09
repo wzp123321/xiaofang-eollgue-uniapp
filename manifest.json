@@ -83,7 +83,13 @@
             "sdkConfigs" : {
                 "ad" : {},
                 "maps" : {},
-                "oauth" : {},
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx7df5979be4fc5bb8",
+                        "appsecret" : "b1e40fe2436e7c8a85302af76c6c7a26",
+                        "UniversalLinks" : "https://firecollegue.cn/"
+                    }
+                },
                 "payment" : {
                     "appleiap" : {},
                     "weixin" : {
