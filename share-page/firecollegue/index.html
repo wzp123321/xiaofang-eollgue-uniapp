@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Expires" content="0" />
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <title>消防学院</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .share-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .share-wrapper .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .share-wrapper .tips {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            width: 215px;
+            height: 105px;
+        }
+
+        .share-wrapper .btn {
+            position: absolute;
+            top: 80%;
+            left: 5%;
+            width: 90%;
+            height: 64px;
+        }
+
+        .share-wrapper .btn img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            function getQueryString(name) {
+                var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]);
+                }
+                return null;
+            }
+            // {type:类型 0-规范 1-解读，url:地址} 
+            const type = getQueryString('type') || 0
+            const href = window.location.href
+            const url = href.split('url=')[1]
+            console.log('type', type, url)
+            // 根据type获取图片地址
+            const src = Number(type) === 0 ? './static/guifan_share.png' : './static/jiedu_share.png'
+            $('.back').attr('src', src);
+            let ele = document.createElement('a')
+            ele.href = "firecollegue://" + url
+            ele.click()
+
+
+            var iosLinkUrl = "https://apps.apple.com/cn/app/%E6%B6%88%E9%98%B2%E5%AD%A6%E9%99%A2/id1546724922" // 淘宝 app store 下载地址
+            var androidLinkurl =
+                "https://a.app.qq.com/o/simple.jsp?pkgname=io.dcloud.appFireInstitute" // anzhuo
+
+            var u = navigator.userAgent,
+                isAndroid, isIOS
+            isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端
+            isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            var link = isIOS ? iosLinkUrl : androidLinkurl
+            $('.btn').attr('href', link)
+        })
+    </script>
+    <div class="share-wrapper">
+        <img class="back" src="" alt="">
+        <img class="tips" src="./static/download-tip.png" alt="">
+        <a class="btn">
+            <img src="./static/download-btn.png" alt="">
+        </a>
+    </div>
+</body>
+
+</html>
