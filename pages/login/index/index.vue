@@ -58,13 +58,13 @@
 				<text style="color: #FCD002;" @tap="linkToServiceAgreement(0)">《隐私政策》</text>
 			</text>
 		</view>
-		<!-- <view class="login-wrap-other">
+		<view class="login-wrap-other">
 			<view class="login-wrap-other-title">其他方式登录</view>
 			<view class="login-wrap-other-btn">
 				<image class="login-wrap-other-btn-wechat" src="/static/svg/wechat.svg" @click="weichatLogin"></image>
 				<text class="login-wrap-other-btn-txt">微信登录</text>
 			</view>
-		</view> -->
+		</view>
 		<!-- 地区编号弹框 -->
 		<uniPopup type="bottom" ref="code_popup">
 			<view class="login-wrap-area-code">
