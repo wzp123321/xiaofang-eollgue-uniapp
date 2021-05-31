@@ -37,7 +37,6 @@
         "modules" : {
             "Push" : {},
             "Share" : {},
-            "Speech" : {},
             "VideoPlayer" : {},
             "Payment" : {},
             "OAuth" : {}
@@ -85,14 +84,13 @@
                 "ad" : {},
                 "maps" : {},
                 "oauth" : {
-                    "weixin" : {
-                        "appid" : "wx7df5979be4fc5bb8",
-                        "appsecret" : "b1e40fe2436e7c8a85302af76c6c7a26",
-                        "UniversalLinks" : "https://firecollegue.cn/"
+                    "sina" : {
+                        "appkey" : "",
+                        "appsecret" : "",
+                        "redirect_uri" : ""
                     }
                 },
                 "payment" : {
-                    "appleiap" : {},
                     "weixin" : {
                         "__platform__" : [ "android" ],
                         "appid" : "wx7df5979be4fc5bb8",
@@ -100,7 +98,8 @@
                     },
                     "alipay" : {
                         "__platform__" : [ "android" ]
-                    }
+                    },
+                    "appleiap" : {}
                 },
                 "push" : {
                     "unipush" : {}

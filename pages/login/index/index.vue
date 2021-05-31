@@ -13,10 +13,11 @@
 				<view class="login-wrap-form-item-input">
 					<view class="login-wrap-form-item-input-pre">
 						<text>+{{ areaCode }}</text>
-						<view class="icon iconjiantouarrow486" style="margin-left: 22rpx;" @tap="handleAreaCodeOpenClose('open')"></view>
+						<view class="icon iconjiantouarrow486" style="margin-left: 22rpx;"
+							@tap="handleAreaCodeOpenClose('open')"></view>
 					</view>
-					<input placeholder="请输入手机号码" v-model="formData.phoneNumber" type="number" style="margin-left: 66rpx;"
-					 placeholder-style="color: #929292" class="ipt" />
+					<input placeholder="请输入手机号码" v-model="formData.phoneNumber" type="number"
+						style="margin-left: 66rpx;" placeholder-style="color: #929292" class="ipt" />
 				</view>
 			</view>
 			<view class="login-wrap-form-item">
@@ -26,8 +27,9 @@
 				</view>
 				<view class="login-wrap-form-item-input" style="justify-content: space-between; border-bottom: none">
 					<view class="code-ipt"><input type="number" placeholder="请输入验证码" v-model="formData.code" class="ipt"
-						 placeholder-style="color: #929292" /></view>
-					<button class="btn" @tap="getCodeHandler" :class="{ disabled: isCountDown }" :disabled="isCountDown">
+							placeholder-style="color: #929292" /></view>
+					<button class="btn" @tap="getCodeHandler" :class="{ disabled: isCountDown }"
+						:disabled="isCountDown">
 						{{ isCountDown ? countDownTime + '秒后重新获取' : '获取验证码' }}
 					</button>
 				</view>
@@ -39,17 +41,19 @@
 					<text class="login-wrap-form-item-label-txt">邀请码</text>
 				</view>
 				<view class="login-wrap-form-item-input">
-					<input placeholder="请输入邀请码(非必填)" v-model="formData.invitecode" type="text" placeholder-style="color: #929292"
-					 class="ipt" />
+					<input placeholder="请输入邀请码(非必填)" v-model="formData.invitecode" type="text"
+						placeholder-style="color: #929292" class="ipt" />
 				</view>
 			</view>
 			<view class="login-wrap-form-item" style="margin-bottom: 36rpx;">
-				<button class="login-wrap-form-item-submit" @tap="loginHandler" :disabled="!formData.phoneNumber">登录</button>
+				<button class="login-wrap-form-item-submit" @tap="loginHandler"
+					:disabled="!formData.phoneNumber">登录</button>
 			</view>
 		</view>
 		<view class="login-wrap-reads">
 			<view class="login-wrap-reads-icon icon iconweixuanzhong" @tap="agreeHandler">
-				<view class="login-wrap-reads-icon-inerIcon icon iconxuanze" v-if="formData.isAgree" style="color:#FCD002;"></view>
+				<view class="login-wrap-reads-icon-inerIcon icon iconxuanze" v-if="formData.isAgree"
+					style="color:#FCD002;"></view>
 			</view>
 			<text class="login-wrap-reads-txt">
 				我已阅读并同意
@@ -58,7 +62,7 @@
 				<text style="color: #FCD002;" @tap="linkToServiceAgreement(0)">《隐私政策》</text>
 			</text>
 		</view>
-		<view class="login-wrap-other">
+		<view class="login-wrap-other" v-if="!isIOS">
 			<view class="login-wrap-other-title">其他方式登录</view>
 			<view class="login-wrap-other-btn">
 				<image class="login-wrap-other-btn-wechat" src="/static/svg/wechat.svg" @click="weichatLogin"></image>
@@ -69,10 +73,12 @@
 		<uniPopup type="bottom" ref="code_popup">
 			<view class="login-wrap-area-code">
 				<view class="login-wrap-area-code-header">地区编号</view>
-				<image class="login-wrap-area-code-close" src="../../../static/close.svg" mode="" @tap="handleAreaCodeOpenClose('close')"></image>
+				<image class="login-wrap-area-code-close" src="../../../static/close.svg" mode=""
+					@tap="handleAreaCodeOpenClose('close')"></image>
 				<scroll-view class="login-wrap-area-code-scroll" scroll-y="true">
-					<view v-for="(areaItem,areaIndex) in areaCodes" :key="areaIndex" class="login-wrap-area-code-scroll-data flex-row-space"
-					 @tap="handleAreaCodeChoose(areaItem.code)">
+					<view v-for="(areaItem,areaIndex) in areaCodes" :key="areaIndex"
+						class="login-wrap-area-code-scroll-data flex-row-space"
+						@tap="handleAreaCodeChoose(areaItem.code)">
 						<view class="title">
 							{{areaItem.title}}
 						</view>
@@ -113,6 +119,20 @@
 		components: {
 			uniPopup
 		},
+		computed: {
+			/**
+			 * 是否为ios
+			 */
+			isIOS: function() {
+				let isios = false;
+				uni.getSystemInfo({
+					success(res) {
+						isios = res.platform === "ios";
+					},
+				});
+				return isios;
+			},
+		},
 		data() {
 			return {
 				contentHeight: 574,
@@ -134,7 +154,8 @@
 			...mapActions(['setUserInfo']),
 			// 跳转服务协议&隐私政策
 			linkToServiceAgreement(type) {
-				const url = type === 1 ? '/pages/service-argeement/service-argeement' : '/pages/privacy-policy/privacy-policy';
+				const url = type === 1 ? '/pages/service-argeement/service-argeement' :
+					'/pages/privacy-policy/privacy-policy';
 				uni.navigateTo({
 					url
 				});
@@ -215,7 +236,8 @@
 						});
 					} else {
 						uni.navigateTo({
-							url: '/pages/login/complete/complete?userInfo=' + encodeURIComponent(JSON.stringify(result.userInfo)),
+							url: '/pages/login/complete/complete?userInfo=' + encodeURIComponent(JSON
+								.stringify(result.userInfo)),
 							animationType: 'pop-in'
 						});
 					}
@@ -345,12 +367,12 @@
 			this.$nextTick(() => {
 				// 判断是否显示过欢迎语
 				const isInstall = uni.getStorageSync('xf_first_install')
-				if(!isInstall){
+				if (!isInstall) {
 					uni.navigateTo({
-						url:'/pages/welcome/welcome'
+						url: '/pages/welcome/welcome'
 					})
 				}
-				
+
 				// #ifdef APP-PLUS
 				let info = plus.push.getClientInfo();
 				this.clientId = info.clientid;

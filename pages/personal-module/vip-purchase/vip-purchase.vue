@@ -17,8 +17,7 @@
               () => {
                 isRead = !isRead;
               }
-            " /><text
-					 @tap="linkToServiceAgreement">已阅读并同意《消防学院会员用户协议》</text>
+            " /><text @tap="linkToServiceAgreement">已阅读并同意《消防学院会员用户协议》</text>
 				</label>
 				<button type="default" @tap="handlePay">
 					立即支付<text style="font-size: 11px">￥{{ goodInfo.rebatePrice || goodInfo.price }}</text>
@@ -35,8 +34,7 @@
             () => {
               isRead = !isRead;
             }
-          " /><text
-				 @tap="linkToServiceAgreement">已阅读并同意《消防学院会员用户协议》</text>
+          " /><text @tap="linkToServiceAgreement">已阅读并同意《消防学院会员用户协议》</text>
 			</label>
 		</view>
 	</view>
@@ -201,6 +199,7 @@
 			},
 			/**
 			 * 苹果支付
+			 * productid必须是string
 			 */
 			getApplePay() {
 				if (!this.isRead) {
@@ -217,39 +216,38 @@
 				const {
 					productid
 				} = this.goodInfo;
+				console.log('productid---------------', iapChannel, productid, typeof productid);
 				const that = this;
 				const transactionDateresult = zdIospay.ZdIospayFunctionSync(productid);
 				const transactionDate = eval("(" + transactionDateresult + ")");
-				console.log(transactionDate);
+				console.log('transactionDate-----------------', transactionDate);
 				try {
-					console.log(iapChannel, productid);
 					that.loading = true;
 					// plus.payment.request(
-					//   iapChannel,
-					//   {
-					//     productid,
-					//   },
-					//   function (result) {
-					//     console.log("result------------------------------", result);
-					//     this.getIapPayChecked(result);
-					//   },
-					//   function (err) {
-					//     console.log("err-------", err);
-					//     that.loading = false;
-					//   }
+					// 	iapChannel, {
+					// 		productid: productid + '',
+					// 		optimize: true
+					// 	},
+					// 	function(result) {
+					// 		console.log("result------------------------------", result);
+					// 		this.getIapPayChecked(result);
+					// 	},
+					// 	function(err) {
+					// 		console.log("err-------", err);
+					// 		that.loading = false;
+					// 	}
 					// );
 					uni.requestPayment({
 						provider: "appleiap",
 						orderInfo: {
-							productid: productid,
-							username: userInfo.id,
-							quantity: 1
+							productid: productid + '',
 						},
 						success: (result) => {
 							console.log("success--------------------", result);
 							this.getIapPayChecked(result);
 						},
 						fail: (e) => {
+							console.log('e-------------------------', e)
 							uni.showToast({
 								title: '支付失败'
 							})
@@ -306,14 +304,19 @@
 						this.loading = false;
 						// 返回上一级
 						uni.navigateBack();
+					} else {
+						uni.showToast({
+							title: '支付失败【' + res.message + '】'
+						})
+						this.loading = false;
 					}
 				} catch (error) {
 					console.log("error---------------------", error);
+					uni.showToast({
+						title: '支付失败【' + error + '】'
+					})
 					this.loading = false;
 				}
-
-				// 返回上一级
-				uni.navigateBack();
 			},
 			/**
 			 * 苹果支付  获取支付通道 https://www.jianshu.com/p/644d136801e9
@@ -386,6 +389,7 @@
 							productid: item.goodsId,
 						});
 					});
+					console.log(list)
 					this.vipList = list;
 					this.goodInfo = list[0];
 				}
